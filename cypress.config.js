@@ -1,5 +1,3 @@
-require('cypress-xpath');
-
 module.exports = {
   e2e: {
     setupNodeEvents(on, config) {
