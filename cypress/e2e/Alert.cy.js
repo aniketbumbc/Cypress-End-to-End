@@ -69,9 +69,5 @@ describe('Alert test cases', () => {
   });
 });
 
-// https://www.youtube.com/watch?v=TgLRQhw3GDM&list=PLUDwpEzHYYLvA7QFkC1C0y0pDPqYS56iU&index=10
-
 // https://7rdspt.csb.app/
 // https://the-internet.herokuapp.com/basic_auth
-
-// https://the-internet.herokuapp.com/windows
