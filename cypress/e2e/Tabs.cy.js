@@ -27,7 +27,7 @@ describe('Tab operations', () => {
     cy.url().should(
       'include',
       'https://the-internet.herokuapp.com/windows/new'
-    );
+    ); // need same domain
 
     cy.get("div[class='example'] h3").contains('New Window');
 
