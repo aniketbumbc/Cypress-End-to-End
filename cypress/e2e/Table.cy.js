@@ -26,9 +26,46 @@ describe('Table', () => {
     ).contains('demo234566@gmail.com');
   });
 
-  it.only('check cell data from specific row & column', () => {
-    cy.get(
-      '.table.table-bordered.table-hover tbody>tr:nth-child(5)>td:nth-child(3)'
-    ).contains('demo234566@gmail.com');
+  it('read data from first page row & column', () => {
+    cy.get('.table.table-bordered.table-hover tbody>tr').each(
+      ($row, index, $rows) => {
+        cy.wrap($row).within(() => {
+          cy.get('td').each(($col, index, $cols) => {
+            cy.log($col.text());
+          });
+        });
+      }
+    );
+  });
+
+  it.only('pagination in table', () => {
+    let totalPages = 5;
+
+    // cy.get('.col-sm-6.text-end').then((value) => {
+    //   let myText = value.text();
+    //   totalPages = myText.substring(
+    //     myText.indexOf('(') + 1,
+    //     myText.indexOf('Pages') - 1
+    //   );
+    //   cy.log('totalPages', totalPages);
+    // });
+
+    for (let i = 1; i <= totalPages; i++) {
+      if (totalPages > 1) {
+        cy.get(`.pagination>li:nth-child(${i})`).click();
+
+        cy.wait(400);
+
+        cy.get('.table.table-bordered.table-hover tbody>tr').each(
+          ($row, index, $rows) => {
+            cy.wrap($row).within(() => {
+              cy.get('td:nth-child(3)').then((e) => {
+                cy.log(e.text());
+              });
+            });
+          }
+        );
+      }
+    }
   });
 });
