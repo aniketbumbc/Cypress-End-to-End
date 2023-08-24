@@ -1,5 +1,5 @@
 describe('handling frame', () => {
-  it.skip('getting into iframe approch 1', () => {
+  it('getting into iframe approch 1', () => {
     cy.visit('https://the-internet.herokuapp.com/iframe');
 
     const iframe = cy
@@ -12,7 +12,7 @@ describe('handling frame', () => {
     cy.get("button[title='Bold']").click();
   });
 
-  it.only('getting into iframe approch 2 custom command', () => {
+  it('getting into iframe approch 2 custom command', () => {
     cy.visit('https://the-internet.herokuapp.com/iframe');
 
     cy.getIframe('#mce_0_ifr').clear().type('Hello Aniket {cmd+a}');
