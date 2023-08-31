@@ -28,4 +28,26 @@ describe('Custom Commands', () => {
       'Apple MacBook Pro 13-inch'
     );
   });
+
+  it('Screenshot', () => {
+    cy.visit('https://demo.nopcommerce.com/');
+
+    cy.screenshot('homepage');
+    cy.wait(3000);
+    cy.get("img[alt='nopCommerce demo store']").screenshot('logo');
+  });
+
+  it.only('Screenshot automatically terminal on fail testing. include video', () => {
+    cy.visit('https://demo.nopcommerce.com/');
+
+    cy.clickLink('Apple MacBook Pro 13-inch');
+
+    cy.get("div[class='product-name'] h1").should('have.text', 'Nokia Phone');
+  });
 });
+
+/**
+ *  npx cypress run  --spec cypress/e2e/customCommands.cy.js
+ *
+ * on terminal command for capture fail test cases and video
+ */
